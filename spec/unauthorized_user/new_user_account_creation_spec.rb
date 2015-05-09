@@ -31,5 +31,6 @@ RSpec.describe "new user can create account", type: :feature do
 
     expect(page).to have_content("Account created!")
     expect(page).to have_content("Task Lists")
+    expect(current_path).to eql(task_lists_path)
   end
 end
