@@ -8,9 +8,14 @@
           <%= f.label :title %>
           <%= f.text_field :title, class: "form-control"%><br>
 
-        <div>
-          <%= f.submit "Create A Task List", class: "btn btn-primary" %>
-        </div>
+          <div>
+            <%= f.label :archived %>
+            <%= f.check_box :archived %>
+          </div>
+
+          <div>
+            <%= f.submit "Add List", class: "btn btn-primary" %>
+          </div>
         <% end %>
     </div>  
 </div>
