@@ -8,10 +8,12 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody id="archived">
     <% @archived.reverse.each do |list| %>
       <tr>
         <td><%= link_to list.title, task_list_path(list.id) %></td>
+        <td><%= link_to 'Delete', task_list_path(list.id), method: :delete, data: { confirm: "Are you sure you want to delete this list?" }%></td>
+
       </tr>
     <% end %>
   </tbody>

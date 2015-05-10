@@ -36,6 +36,14 @@ class TaskListsController < ApplicationController
     end
   end
 
+  def destroy
+    @task_list = TaskList.find(params[:id])
+    @task_list.destroy
+    redirect_to task_lists_path
+    flash[:warning] = "Bye bye #{@task_list.title}!"
+
+  end
+
   private
   def task_list_params
     params.require(:task_list).permit(:title, :archived)
