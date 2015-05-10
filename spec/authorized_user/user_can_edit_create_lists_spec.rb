@@ -12,11 +12,11 @@ RSpec.describe "authorized users", type: :feature do
 
   it "can create a list" do
     user_logs_in
-    click_on "New Task List"
+    click_on "Create A New Task List"
 
     expect(page).to have_content("Title")
     fill_in("task_list[title]", with: "Weekend Errands" )
-    click_on "Create A Task List"
+    click_on "Add"
     expect(page).to have_content("Weekend Errands")
   end
 

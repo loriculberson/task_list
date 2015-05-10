@@ -1,7 +1,8 @@
 class TaskListsController < ApplicationController
   
   def index
-    @task_lists = current_user.task_lists
+    @archived = current_user.task_lists.where(archived:true)
+    @unarchived = current_user.task_lists.where(archived:false)
   end
 
   def new
