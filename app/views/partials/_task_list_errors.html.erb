@@ -1,0 +1,13 @@
+<% if @task_list && @task_list.errors.any? %>
+  <div id="error_explatasknation">
+    <div class="alert alert-danger">
+    The form contains <%= pluralize(@task_list.errors.count, "error") %>.
+    </div>
+    <ul>
+      <% @task_list.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+task

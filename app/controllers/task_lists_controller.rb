@@ -16,7 +16,6 @@ class TaskListsController < ApplicationController
       flash[:success] = "New task list created!"
       redirect_to task_lists_path
     else
-      flash[:warning] = "Task must have a title."
       render :new 
     end
   end
