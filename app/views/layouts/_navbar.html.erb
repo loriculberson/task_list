@@ -1,17 +1,21 @@
 <nav class='navbar navbar-inverse navbar-fixed-top' role='navigation'>
   <div class='container-fluid'>
     <div class='navbar-header'>
-      <a class='navbar-brand title'>Task List</a>
-    </div>
-      <div class='navbar-form navbar-right'>
-        
-      <ul class="nav navbar-nav">  
+      <ul class="nav navbar-nav"> 
         <li> <%= link_to "Home", root_path %> </li>
-        <li> <%= link_to "Sign Up", new_user_path, class: 'btn btn-default navbar-right' %> </li>
+        <li> <%= link_to "Sign Up", new_user_path %> </li>
       </ul>
+    </div>
+
+      <div class='navbar-form navbar-right' role='search'>
+      <ul class="nav navbar-nav" id="login"> 
+        <li>  <%= render 'sessions/new' %> </li>
+      </ul> 
   
       </div>
     </div>
   </div>
 </nav>
-<div id='name' style='margin-top:90px'></div>
+<div id='name' style='margin-top:70px'></div>
+
+
