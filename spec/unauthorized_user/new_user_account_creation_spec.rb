@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe "new user can create account", type: :feature do  
 
-
   it "sees the sign up link on the homepage" do
     visit '/'
     expect(page).to have_content("Sign Up")
@@ -32,5 +31,18 @@ RSpec.describe "new user can create account", type: :feature do
     expect(page).to have_content("Account created!")
     expect(page).to have_content("Task Lists")
     expect(current_path).to eql(task_lists_path)
+  end
+
+  it "can not create an account without all attributes" do
+    visit '/'
+    click_link "Sign Up"
+    fill_in("user[username]", with: "buttercup" )
+    fill_in("user[display_name]", with: "rockstar" )
+    fill_in("user[email]", with: nil )
+    fill_in("user[password]", with: "password" )
+    fill_in("user[password_confirmation]", with: "password" )
+    click_button "Create Account"
+
+    expect(page).to have_content("Email can't be blank")
   end
 end

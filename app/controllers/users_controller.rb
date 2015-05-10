@@ -8,8 +8,8 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.create(user_params)
-    if user.save!
+    @user = User.create(user_params)
+    if @user.save
       flash[:success] = "Account created!"
       redirect_to task_lists_path
     else
