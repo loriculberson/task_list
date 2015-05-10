@@ -26,10 +26,10 @@ RSpec.describe "new user can create account", type: :feature do
     fill_in("user[email]", with: "happy@example.com" )
     fill_in("user[password]", with: "password" )
     fill_in("user[password_confirmation]", with: "password" )
-    click_button "Create Account"
+    click_link_or_button "Create Account"
 
     expect(page).to have_content("Account created!")
-    expect(page).to have_content("Task Lists")
+    expect(page).to have_content("rockstar's Task Lists")
     expect(current_path).to eql(task_lists_path)
   end
 

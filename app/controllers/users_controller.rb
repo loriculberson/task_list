@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     if @user.save
+      session[:user_id] = @user.id
       flash[:success] = "Account created!"
       redirect_to task_lists_path
     else
