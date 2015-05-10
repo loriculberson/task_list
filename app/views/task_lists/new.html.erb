@@ -3,6 +3,7 @@
       <h1>Create A Task List</h1>
 
         <%= form_for(:task_list, url: task_lists_path, method: :post, role:"form") do |f| %>
+         <%= render "partials/task_list_errors" %>
 
           <%= f.label :title %>
           <%= f.text_field :title, class: "form-control"%><br>
