@@ -1,9 +1,11 @@
 class TaskMailer < ApplicationMailer
-  default from: "yay@example.com"
+  default from: "bigskybandit@sbcglobal.net"
 
-  def task_info_email(email, task)
+  def create(email, task)
     @task = task
     @email = email
-    mail(to: email, subject: task.title)
+    
+    render layout: 'task_email' 
+    mail(to: email, subject: task.title) 
   end
 end

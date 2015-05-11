@@ -29,7 +29,7 @@ RSpec.describe "new user can create account", type: :feature do
     click_link_or_button "Create Account"
 
     expect(page).to have_content("Account created!")
-    expect(page).to have_content("rockstar's Task Lists")
+    expect(page).to have_content("rockstar's List of Things to Do")
     expect(current_path).to eql(task_lists_path)
   end
 

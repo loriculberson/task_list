@@ -19,15 +19,19 @@ class TasksController < ApplicationController
     @task = task_list.tasks.new(task_params)
 
     if @task.save 
-      email_to_match_data_or_nil = @task.title.match(/\/cc (.+)/)
-      if email_to_match_data_or_nil.present?
-        email = email_to_match_data_or_nil[0]
-        TaskMailer.task_info_email(email, @task).deliver
+
+      email_matchdata = @task.title.match(/\/cc (.+)/)
+      if !email_matchdata.nil?
+        email = email_matchdata[1] 
+
+        TaskMailer.create(email, @task).deliver
+        flash[:notice] = "Your email has been sent!"
       end
+
         flash[:success] = "New task created!"
         redirect_to task_list_tasks_path
     else
-      render :new 
+        render :new 
     end
   end
 

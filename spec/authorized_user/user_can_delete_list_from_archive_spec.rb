@@ -18,7 +18,6 @@ RSpec.describe "authorized users delete a list", type: :feature do
     user_logs_in
 
     within('#archived tbody tr:nth-child(1)') do
-    save_and_open_page
       click_on "Delete"
     end
     
