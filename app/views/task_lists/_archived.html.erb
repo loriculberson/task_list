@@ -1,4 +1,4 @@
-<h3> Archived List </h3>
+<h3> Archived Lists </h3>
 <table class="table table-condensed table-striped" id="archived">
   <thead>
     <tr>
@@ -12,6 +12,7 @@
     <% @archived.reverse.each do |list| %>
       <tr>
         <td><%= link_to list.title, task_list_tasks_path(list.id) %></td>
+        <td><%= link_to 'Edit', edit_task_list_path(list.id)%></td>
         <td><%= link_to 'Delete', task_list_path(list.id), method: :delete, data: { confirm: "Are you sure you want to delete this list?" }%></td>
 
       </tr>

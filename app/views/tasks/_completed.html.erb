@@ -15,7 +15,7 @@
         <td><%= task.title %></td>
         <td><%= task.description %></td>
         <td><%= task.due_date %></td>
-        <td><%#= link_to 'Delete', edit_task_list_task_path(list.task.id) %></td>
+        <td><%= link_to 'Edit', edit_task_list_task_path(params[:task_list_id], task.id) %></td>
       </tr>
     <% end %>
   </tbody>
