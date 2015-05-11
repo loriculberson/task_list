@@ -35,6 +35,4 @@ RSpec.describe "authorized users", type: :feature do
     expect(page).to have_content("Weekend Errands")
     expect(page).not_to have_content("Plan vacation")
   end
-
-
 end
