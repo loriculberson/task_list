@@ -11,7 +11,7 @@ RSpec.describe "authorized users", type: :feature do
     click_on 'Login'
   end
 
-  it "can mark a list as archived and it does not appear on the index page" do
+  it "can mark a list as archived and it appears on the index page" do
     user_logs_in
 
     task_list = FactoryGirl.create(:task_list)
@@ -20,7 +20,7 @@ RSpec.describe "authorized users", type: :feature do
     fill_in("task_list[title]", with: "Plan vacation" )
     check 'Archived'
     click_on "Add List"
-    expect(page).not_to have_content("Plan vacation")
+    expect(page).to have_content("Plan vacation")
   end
 
   it "can leave archived blank it does appear on the index page" do

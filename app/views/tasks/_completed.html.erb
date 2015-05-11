@@ -1,0 +1,12 @@
+  <h3> Completed Tasks </h3>
+  <tbody>
+    <% @completed.reverse.each do |task| %>
+      <tr>
+        <td><%= task.title %></td>
+        <td><%= task.description %></td>
+        <td><%= task.due_date %></td>
+        <td><%#= link_to 'Edit', edit_task_list_task_path(list.task.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
