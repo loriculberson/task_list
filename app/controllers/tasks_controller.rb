@@ -1,11 +1,10 @@
 class TasksController < ApplicationController
 
   def index
-    tasks = Task.where(task_list_id: params[:id])
-    @incomplete = tasks.where(completed: false)
-    @completed = tasks.where(completed: true)
-    # task_list = TaskList.find(params[:id])
-    # @incomplete = task_list.tasks.where(completed:false)
+    # tasks = Task.where(task_list_id: params[:id])
+    task_list   = TaskList.find(params[:task_list_id])
+    @incomplete = task_list.tasks.where(completed:false)
+    @completed  = task_list.tasks.where(completed: true)
   end
 
   def new
@@ -16,10 +15,17 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
-    if @task.save
-      flash[:success] = "New task created!"
-      redirect_to task_list_tasks_path
+    task_list = TaskList.find(params[:task_list_id])
+    @task = task_list.tasks.new(task_params)
+
+    if @task.save 
+      email_to_match_data_or_nil = @task.title.match(/\/cc (.+)/)
+      if email_to_match_data_or_nil.present?
+        email = email_to_match_data_or_nil[0]
+        TaskMailer.task_info_email(email, @task).deliver
+      end
+        flash[:success] = "New task created!"
+        redirect_to task_list_tasks_path
     else
       render :new 
     end
