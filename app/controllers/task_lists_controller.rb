@@ -40,7 +40,6 @@ class TaskListsController < ApplicationController
     @task_list.destroy
     redirect_to task_lists_path
     flash[:warning] = "Bye bye #{@task_list.title}!"
-
   end
 
   private

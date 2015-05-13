@@ -21,7 +21,7 @@ class TasksController < ApplicationController
     if @task.save 
 
       email_matchdata = @task.title.match(/\/cc (.+)/)
-      if !email_matchdata.nil?
+      if email_matchdata
         email = email_matchdata[1] 
 
         TaskMailer.create(email, @task).deliver

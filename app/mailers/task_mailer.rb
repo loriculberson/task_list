@@ -5,7 +5,6 @@ class TaskMailer < ApplicationMailer
     @task = task
     @email = email
     
-    render layout: 'task_email' 
     mail(to: email, subject: task.title) 
   end
 end

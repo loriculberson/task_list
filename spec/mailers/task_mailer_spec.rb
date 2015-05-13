@@ -14,7 +14,7 @@ RSpec.describe TaskMailer, type: :mailer do
 
     expect(result).not_to be_nil
     expect(result.to).to include "bigskybandit@sbcglobal.net"
-    expect(result.from).to include "yay@example.com"
+    expect(result.from).to include "bigskybandit@sbcglobal.net"
     expect(result.subject).to eq "#{task.title}"
   end
 end
