@@ -2,7 +2,7 @@
     <div class="form">
       <h3>Edit Task </h3>
 
-        <%= form_for(@task, url: task_list_tasks_path, method: :patch, role:"form") do |f| %>
+        <%= form_for(@task, url: task_list_task_path(@task.task_list_id ,@task.id), method: :patch, role:"form") do |f| %>
          <%= render "partials/task_errors" %>
 
           <%= f.label :title %>

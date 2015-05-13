@@ -25,6 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+gem 'dotenv-rails'
 
 group :test do
   gem 'capybara'
@@ -51,5 +52,6 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'
   gem "factory_girl_rails", "~> 4.0"
+  gem 'dotenv-rails'
 end
 

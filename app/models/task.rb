@@ -1,5 +1,5 @@
 class Task < ActiveRecord::Base
-  validates :title, :description, :task_list_id, 
+  validates :title, :description,
             :due_date, presence: true
   belongs_to :task_list
 end
