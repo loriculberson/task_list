@@ -1,6 +1,6 @@
 $(document).ready( function () {
    
-  $('#tasks').DataTable( {
+  $('.tasks').DataTable( {
       "columnDefs": [
         { "orderable": false, "targets": 3 }
       ]
