@@ -1,11 +1,12 @@
 <h3> Current Tasks</h3>
 
-<table class="table table-bordered table-condensed table-striped tasks">
+<table class="table table-bordered table-condensed table-striped incomplete-tasks tasks">
   <thead>
     <tr>
       <th>Title</th>
       <th >Description</th>
       <th>Due Date</th>
+      <th></th>
       <th></th>
     </tr>
   </thead>
@@ -17,6 +18,7 @@
         <td><%= task.description %></td>
         <td><%= task.due_date %></td>
         <td><%= link_to 'Edit', edit_task_list_task_path(params[:task_list_id], task.id) %></td>
+        <td> <input type="checkbox" class="task-status" data-url="<%= task_list_task_path(task.task_list, task) %>"></td>
       </tr>
     <% end %>
   </tbody>
