@@ -24,7 +24,7 @@ class TasksController < ApplicationController
       if email_matchdata
         email = email_matchdata[1] 
 
-        TaskMailer.create(email, @task).deliver
+        TaskMailer.create(email, @task).deliver_later
         flash[:notice] = "Your email has been sent!"
       end
 
@@ -41,7 +41,7 @@ class TasksController < ApplicationController
       if @task.update(task_params)
         render nothing:true
       else
-         render nothing:true, status: 422
+        render nothing:true, status: 422
       end
     else
       if @task.update(task_params)

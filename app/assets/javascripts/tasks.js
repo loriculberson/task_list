@@ -6,6 +6,7 @@ $(document).ready( function () {
       ]
   })
 
+
   $('.incomplete-tasks .task-status').click(function( event ){
     var taskUpdateUrl = $(event.target).data('url')
       $.ajax({
