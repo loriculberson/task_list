@@ -4,20 +4,31 @@ $(document).ready( function () {
       "columnDefs": [
         { "orderable": false, "targets": [3,4] }
       ]
-  })
+  });
 
+  $('.incomplete .task-status').click(function( event ){
+    var checkbox = $(event.target);
+    var taskUpdateUrl = checkbox.data('url');
+    $.ajax({
+      url: taskUpdateUrl,
+      type: 'PATCH',
+      data: { task: { completed: 1 } }
+    }).done(function(){
+      var tr = checkbox.parents('tr');
+      var complete = $('.complete tbody');
+      complete.append(tr);
+      checkbox.removeAttr('checked');
+    })
+  });
 
-  $('.incomplete-tasks .task-status').click(function( event ){
-    var taskUpdateUrl = $(event.target).data('url')
-      $.ajax({
-        url: taskUpdateUrl,
-        type: 'PATCH',
-        data: { task: { completed: 1 } }
-      })
-
-  })
+  
 
 });
+
+
+
+
+
 
 
 //hey jquery find the checkboxes
