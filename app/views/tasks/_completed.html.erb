@@ -17,7 +17,7 @@
         <td><%= task.description %></td>
         <td><%= task.due_date %></td>
         <td><%= link_to 'Edit', edit_task_list_task_path(params[:task_list_id], task.id) %></td>
-        <td><%= check_box_tag :completed %></td>
+        <td><input type="checkbox" class="task-status" data-url="<%= task_list_task_path(task.task_list, task) %>"</td>
       </tr>
     <% end %>
   </tbody>

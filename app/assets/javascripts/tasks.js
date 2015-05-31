@@ -6,7 +6,7 @@ $(document).ready( function () {
       ]
   });
 
-  $('.incomplete .task-status').click(function( event ){
+  $('.incomplete').on('click', '.task-status', function( event ){
     var checkbox = $(event.target);
     var taskUpdateUrl = checkbox.data('url');
     $.ajax({
@@ -21,7 +21,21 @@ $(document).ready( function () {
     })
   });
 
-  
+  $('.complete').on("click", '.task-status', function( event ){
+    var checkbox = $(event.target);
+    var taskUpdateUrl = checkbox.data('url');
+    $.ajax({
+      url: taskUpdateUrl,
+      type: 'PATCH',
+      data: { task: { completed: 0 } }
+    }).done(function(){
+      var tr = checkbox.parents('tr');
+      var incomplete = $('.incomplete tbody');
+      incomplete.append(tr);
+      checkbox.removeAttr('checked');
+    })
+
+  })
 
 });
 
