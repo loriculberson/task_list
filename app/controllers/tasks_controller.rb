@@ -24,7 +24,7 @@ class TasksController < ApplicationController
       if email_matchdata
         email = email_matchdata[1] 
 
-        TaskMailer.create(email, @task).deliver
+        TaskMailer.create(email, @task).deliver_later
         flash[:notice] = "Your email has been sent!"
       end
 
@@ -37,12 +37,20 @@ class TasksController < ApplicationController
 
   def update
     @task = Task.find(params[:id])
-    if @task.update(task_params)
-      flash[:success] = "Task updated!"
-      redirect_to task_list_tasks_path
+    if request.xhr?   #if an ajax request
+      if @task.update(task_params)
+        render nothing:true
+      else
+        render nothing:true, status: 422
+      end
     else
-      flash[:warning] = "Oops! Try again."
-      redirect_to :back
+      if @task.update(task_params)
+        flash[:success] = "Task updated!"
+        redirect_to task_list_tasks_path
+      else
+        flash[:warning] = "Oops! Try again."
+        redirect_to :back
+      end
     end
   end
 
